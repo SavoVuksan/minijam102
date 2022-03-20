@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Blueprints/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/TransparentTiles/tile_0011.png" type="Texture" id=2]
+[ext_resource path="res://Blueprints/Airship.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 105, 10 )
@@ -9,13 +10,14 @@ extents = Vector2( 105, 10 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -2, -61 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.3, 0.3 )
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2( 0, 45 )
+position = Vector2( 2, -32 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -26,3 +28,6 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Ground"]
 scale = Vector2( 13.08, 1.2 )
 texture = ExtResource( 2 )
+
+[node name="Airship" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2, 10 )

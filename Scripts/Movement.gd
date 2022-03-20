@@ -11,6 +11,7 @@ onready var kinematic_body : KinematicBody2D = get_node(kinematic_body_node_path
 
 var movement_dir = 0 
 var velocity = 0
+var passive_velocity = 0 # Changed by the AirshipObserver for movement on airships
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !kinematic_body:
@@ -18,11 +19,11 @@ func _ready():
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta):
+func _physics_process(delta):
 	calculate_movement_dir()
-	apply_horizontal_movement()
+	apply_horizontal_movement(delta)
 
-	kinematic_body.move_and_slide(Vector2(velocity,0), Vector2.UP)
+	kinematic_body.move_and_collide(Vector2(velocity,0), false)
 
 func calculate_movement_dir():
 	if Input.is_action_pressed("move_left"):
@@ -32,5 +33,5 @@ func calculate_movement_dir():
 	else:
 		movement_dir = 0
 
-func apply_horizontal_movement():
-	velocity = movement_dir * running_speed
+func apply_horizontal_movement(delta):
+	velocity = movement_dir * running_speed * delta #+ passive_velocity

@@ -27,6 +27,7 @@ func _physics_process(_delta):
 
 func apply_gravity():
 	if !kinematic_body.is_on_floor():
+		can_jump = false
 		velocity = velocity + gravity
 	else:
 		velocity = 0

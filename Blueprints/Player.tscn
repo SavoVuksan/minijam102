@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Graphics/TransparentTiles/tile_0260.png" type="Texture" id=1]
 [ext_resource path="res://Components/Movement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/Jump.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/AirshipObserver.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/MovementController.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.0
@@ -32,3 +34,10 @@ kinematic_body_node_path = NodePath("..")
 [node name="Jump" parent="." instance=ExtResource( 3 )]
 jump_strength = 250
 kinematic_body_node_path = NodePath("..")
+
+[node name="AirshipObserver" parent="." instance=ExtResource( 4 )]
+kinematic_body_node_path = NodePath("..")
+
+[node name="MovementController" parent="." instance=ExtResource( 5 )]
+movement_node_path = NodePath("../Movement")
+airship_observer_node_path = NodePath("../AirshipObserver")
