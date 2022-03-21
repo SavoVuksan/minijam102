@@ -36,8 +36,11 @@ jump_strength = 250
 kinematic_body_node_path = NodePath("..")
 
 [node name="AirshipObserver" parent="." instance=ExtResource( 4 )]
+enabled = true
+cast_to = Vector2( 0, 10 )
 kinematic_body_node_path = NodePath("..")
 
 [node name="MovementController" parent="." instance=ExtResource( 5 )]
 movement_node_path = NodePath("../Movement")
+jump_node_path = NodePath("../Jump")
 airship_observer_node_path = NodePath("../AirshipObserver")

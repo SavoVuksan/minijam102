@@ -9,6 +9,7 @@ onready var kinematic_body = get_node(kinematic_body_node_path)
 
 var movement_dir = Vector2(0,0)
 var velocity = Vector2(0,0)
+var real_velocity = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !kinematic_body:
@@ -21,7 +22,7 @@ func _physics_process(delta):
 	calculate_movement_dir()
 	calculate_velocity(delta)
 
-	kinematic_body.move_and_slide(velocity, Vector2.UP)
+	real_velocity = kinematic_body.move_and_slide(velocity, Vector2.UP)
 
 func calculate_movement_dir():
 	if Input.is_action_pressed("move_left"):

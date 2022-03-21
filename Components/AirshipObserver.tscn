@@ -2,5 +2,5 @@
 
 [ext_resource path="res://Scripts/AirshipObserver.gd" type="Script" id=1]
 
-[node name="AirshipObserver" type="Node2D"]
+[node name="RayCast2D" type="RayCast2D"]
 script = ExtResource( 1 )

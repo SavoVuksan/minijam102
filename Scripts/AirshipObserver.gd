@@ -1,4 +1,4 @@
-extends Node2D
+extends RayCast2D
 
 export(NodePath) var kinematic_body_node_path
 
@@ -15,12 +15,12 @@ func _ready():
 func _process(_delta):
 	_collision  = kinematic_body.get_last_slide_collision()
 
-
 	if _collision and _collision.collider.is_in_group("airship"): 
 		airship_last_stood_on = _collision.collider
 	
 func is_standing_on_airship_currently():
-	if _collision:
+
+	if get_collider() and get_collider().is_in_group("airship"):
 		return true
 	else:
 		return false
